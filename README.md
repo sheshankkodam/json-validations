@@ -1,6 +1,6 @@
 [<img src="https://img.shields.io/travis/playframework/play-scala-starter-example.svg"/>](https://travis-ci.org/playframework/play-scala-starter-example)
 
-# Play Scala Starter
+# Json Validator Using CATS
 
 This is a starter application that shows how json validations cvan be performed using 
 * Json combinators 
