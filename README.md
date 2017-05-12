@@ -1,5 +1,9 @@
 [<img src="https://img.shields.io/travis/playframework/play-scala-starter-example.svg"/>](https://travis-ci.org/playframework/play-scala-starter-example)
 
+![Circle Badge](https://circleci.com/gh/skoczen/will.png?circle-token=da92149684f6e2642fe4ddfd34ef371e264b7133) ![Pypi Badge](https://badge.fury.io/py/will.png)   ![Downloads Badge](https://img.shields.io/pypi/dm/will.svg)
+
+<img  align="right" src="https://gk-will.s3.amazonaws.com/will-head.png?v2" alt="Will's smilling face" title="Will's smilling face"/>
+
 # Json Validator Using CATS
 
 This is a starter application that shows how json validations cvan be performed using 
