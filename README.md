@@ -3,7 +3,7 @@
 
 # Json Validator Using CATS
 
-This is a starter application that shows how json validations cvan be performed using 
+This is a starter application that shows how json validations can be performed using 
 * Json combinators 
 * Try Exception 
 * Option 
