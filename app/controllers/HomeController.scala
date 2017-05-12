@@ -27,7 +27,6 @@ class HomeController @Inject() extends Controller {
       (JsPath \ "lastName").write[String] and
       (JsPath \ "email").write[String] and
       (JsPath \ "phone").write[Long]
-
     ) (unlift(Data.unapply))
 
   def jsonCombinators = Action(parse.json) { request =>
