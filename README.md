@@ -1,5 +1,5 @@
 [<img src="https://img.shields.io/travis/playframework/play-scala-starter-example.svg"/>](https://travis-ci.org/playframework/play-scala-starter-example) ![Downloads Badge](https://img.shields.io/pypi/dm/will.svg)
-<img  align="right" src="https://gk-will.s3.amazonaws.com/will-head.png?v2" alt="Will's smilling face" title="Will's smilling face"/>
+<img  align="right" src="https://i0.wp.com/www.lancescurv.com/wp-content/uploads/2013/07/Validation.jpg?resize=470%2C470" alt="Cat as Lionm" title="Cat as Lion"/>
 
 # Json Validator Using CATS
 
