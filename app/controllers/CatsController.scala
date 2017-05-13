@@ -41,7 +41,7 @@ class CatsController @Inject()(responseReaderWriter: ResponseReaderWriter) exten
     * @return
     */
 
-  def validateWithOptions = Action(parse.json) { request =>
+  def validateWithCats = Action(parse.json) { request =>
     val json = request.body
     val firstName = (json \ "firstName").as[String]
     val lastName = (json \ "lastName").as[String]
