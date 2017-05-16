@@ -21,4 +21,9 @@ class ResponseReaderWriter{
       (JsPath \ "email").write[String] and
       (JsPath \ "phone").write[Long]
     ) (unlift(EmployeeData.unapply))
+
+  implicit val errWrites: Writes[Err] = (
+    (__ \ "ErrCode").write[String] and
+      (__ \ "ErrMsg").write[String]
+    ) (unlift(Err.unapply))
 }
