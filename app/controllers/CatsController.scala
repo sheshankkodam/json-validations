@@ -22,7 +22,7 @@ class CatsController @Inject()(responseReaderWriter: ResponseReaderWriter) exten
 
   def validateLastNameWithCats(name: String):Validated[List[String], String] = {
     name match {
-      case s: String => Validated.valid(s)
+      case s: String if s.length > 0 => Validated.valid(s)
       case _ => Validated.invalid(List("invalid last name"))
     }}
 
@@ -49,7 +49,7 @@ class CatsController @Inject()(responseReaderWriter: ResponseReaderWriter) exten
       case (fn, ln, em, ph) => new EmployeeData(fn, ln, em, ph)
     }
     result match {
-      case Invalid(e) => BadRequest(e.toString)
+      case Invalid(e) => BadRequest(Json.toJson(e))
       case Valid(d) => Ok(Json.toJson(d))
     }
   }

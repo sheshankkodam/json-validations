@@ -8,6 +8,7 @@ POST    /validateWithCombinators    controllers.CombinatorsController.jsonCombin
 POST    /validateWithOptions        controllers.OptionsController.validateWithOptions
 POST    /validateWithEither         controllers.EitherController.validateWithEither
 POST    /validateWithCats           controllers.CatsController.validateWithCats
+POST    /validateWithCatsNel        controllers.CatsNelController.validateWithCatsNel
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
