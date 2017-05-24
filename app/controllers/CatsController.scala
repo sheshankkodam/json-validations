@@ -14,6 +14,15 @@ import cats.implicits._
 class CatsController @Inject()(responseReaderWriter: ResponseReaderWriter) extends Controller {
   implicit val employeeDataWrites = responseReaderWriter.dataWrites
 
+  def validateDataWithCats(d:EmployeeData):Validated[List[String], EmployeeData] = {
+    val validFirstName = validateFirstNameWithCats(d.firstName)
+    val validLastName = validateLastNameWithCats(d.lastName)
+    val validEmail = validateEmailWithCats(d.email)
+    val validPhone = validatePhoneWithCats(d.phone)
+
+    (validFirstName |@| validLastName |@| validEmail |@| validPhone).map(EmployeeData)
+  }
+
   def validateFirstNameWithCats(name: String):Validated[List[String], String] = {
     name match {
       case s: String if s.length > 0 => Validated.valid(s)
@@ -40,15 +49,14 @@ class CatsController @Inject()(responseReaderWriter: ResponseReaderWriter) exten
 
   def validateWithCats = Action(parse.json) { request =>
     val json = request.body
-    val validFirstName = validateFirstNameWithCats((json \ "firstName").as[String])
-    val validLastName = validateLastNameWithCats((json \ "lastName").as[String])
-    val validEmail = validateEmailWithCats((json \ "email").as[String])
-    val validPhone = validatePhoneWithCats((json \ "phone").as[Long])
 
-    val result = (validFirstName |@| validLastName |@| validEmail |@| validPhone).map{
-      case (fn, ln, em, ph) => new EmployeeData(fn, ln, em, ph)
-    }
-    result match {
+    val firstName = (json \ "firstName").as[String]
+    val lastName = (json \ "lastName").as[String]
+    val email = (json \ "email").as[String]
+    val phone = (json \ "phone").as[Long]
+
+    val data = EmployeeData(firstName, lastName, email, phone)
+    validateDataWithCats(data) match {
       case Invalid(e) => BadRequest(Json.toJson(e))
       case Valid(d) => Ok(Json.toJson(d))
     }
