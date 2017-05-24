@@ -12,26 +12,26 @@ class OptionsController @Inject() (responseReaderWriter: ResponseReaderWriter) e
 
   def validateFirstName(name: String): Option[String] = {
     name match {
-      case s: String => Some(s)
-      case _ => None
+      case s: String if s.length > 0 => Some(s)
+      case _ => Some("Invalid first name")
     }}
 
   def validateLastName(name: String): Option[String] = {
     name match {
-      case s: String => Some(s)
-      case _ => None
+      case s: String if s.length > 0 => Some(s)
+      case _ => Some("Invalid last name")
     }}
 
   def validateEmail(email: String): Option[String] = {
     email match {
       case m: String if m contains ".com" => Some(m)
-      case _ => Some("Bad email")
+      case _ => Some("Invalid email")
     }}
 
-  def validatePhone(number: Long): Option[String] = {
+  def validatePhone(number: Long): Option[Long] = {
     number match {
-      case n: Long if n.toString.length == 10 => Some(n.toString)
-      case _ => None
+      case n: Long if n.toString.length == 10 => Some(n)
+      case _ => Some(0)
     }}
 
   /**
@@ -53,7 +53,7 @@ class OptionsController @Inject() (responseReaderWriter: ResponseReaderWriter) e
       validLastName  <- validateLastName(lastName)
       validPhone     <- validatePhone(phone)
       validEmail     <- validateEmail(email)
-    } yield EmployeeData(validFirstName, validLastName, validEmail, validPhone.toLong)
+    } yield EmployeeData(validFirstName, validLastName, validEmail, validPhone)
     Ok(Json.toJson(data))
   }
 }
